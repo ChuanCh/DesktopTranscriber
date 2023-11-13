@@ -10,8 +10,6 @@ import utils
 from time import sleep
 from faster_whisper import WhisperModel
 
-PROG = "Transcribe"
-
 MODEL_SIZE = "large-v2"
 DEVICE = "cuda"
 COMPUTE_TYPE = "int8"
@@ -101,34 +99,3 @@ def transcribe(
             log(f"Cleanup set to true, deleting input audio at {input_filename}")
             os.unlink(input_filename)
     return full_path_out
-
-
-def main() -> int:
-    print("Starting main function")
-    parser = argparse.ArgumentParser(
-        prog=PROG,
-        description="Produces a transcript of a .wav file",
-    )
-    parser.add_argument("audio_file")
-    parser.add_argument(
-        "-c",
-        "--cleanup",
-        action="store_true",
-        help="if set, will delete the source audio after transcribing",
-    )
-    parser.add_argument(
-        "-o",
-        "--overwrite",
-        action="store_true",
-        help="if set, will overwrite any existing files on disk related to previous extraction attempts on the input video",
-    )
-
-    args = parser.parse_args()
-
-    transcribe(args.audio_file, overwrite=args.overwrite, cleanup=args.cleanup)
-
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
