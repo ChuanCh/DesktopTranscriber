@@ -1,3 +1,10 @@
-Transcribe Japanese video file into SRT file, using Faster_Whisper model.
+Transcribe Japanese video file into SRT file, using [Faster_Whisper](https://github.com/guillaumekln/faster-whisper) model.
 
-https://github.com/guillaumekln/faster-whisper
+
+
+### Installation
+
+Run the following command in your terminal to install `faster-whisper`:
+
+```bash
+pip install faster-whisper
